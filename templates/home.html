@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home Page</title>
+</head>
+<body>
+    <div class="container" style="text-align: center">
+        {% include 'navigation.html' %}
+        <h1>This is our website</h1>
+        <form action="/index/" method="POST">
+            {% csrf_token %}
+            <label>
+                <input type="checkbox" name = 'field1'>
+            </label>
+            <button>Submit</button>
+        </form>
+        <p>Welcome! Discover innovative solutions tailored to your needs. We empower individuals and businesses with cutting-edge technology and exceptional service. Explore our range of products and services designed to streamline your processes and achieve your goals. Learn more and start your journey with us today!</p>
+        <button>About US</button>
+        {% if isactive%}
+            <div>
+                <h1>Today's date id {{date}}</h1>
+                <h2>Name is {{name}}</h2>
+                <h3>Anime list</h3>
+                <h4>Anime: {{mangakas.Oda}}</h4>
+                    {% for i in anime %}
+                    <li>{{i}}</li>
+                    {% endfor %}
+            </div>
+        {% endif %}
+
+    </div>
+</body>
+</html>
