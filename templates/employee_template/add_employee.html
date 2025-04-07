@@ -13,48 +13,54 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <div class="card">
+          <div class="card bg-light">
             <div class="card-body">
-              <form>
-
+              <form action="/employee/home/employee_service/add_employee/" method="POST">
+                {% csrf_token %}
                 <div class="mb-3">
                   <label for="InputName" class="form-label">Name</label>
-                  <input type="text" class="form-control" id="InputName">
+                  <input type="text" class="form-control" id="InputName" name ="InputName">
 
                 </div>
 
                 <div class="mb-3">
                   <label for="InputEmployeeID" class="form-label">Employee ID</label>
-                  <input type="text" class="form-control" id="InputEmployeeID">
+                  <input type="text" class="form-control" id="InputEmployeeID" name ="InputEmployeeID">
                 </div>
 
                 <div class="mb-3">
                   <label for="exampleInputEmail1" class="form-label">Email address</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name ="exampleInputEmail1">
                 </div>
 
                 <div class="mb-3">
                   <label for="exampleInputPassword1" class="form-label">Password</label>
-                  <input type="password" class="form-control" id="exampleInputPassword1">
+                  <input type="password" class="form-control" id="exampleInputPassword1" name ="exampleInputPassword1">
                 </div>
 
                 <div class="mb-3">
                   <label for="InputPhone" class="form-label">Phone Number</label>
-                  <input type="text" class="form-control" id="InputPhone">
+                  <input type="text" class="form-control" id="InputPhone" name="InputPhone">
                 </div>
 
                 <div class="mb-3">
                   <label for="InputAddress" class="form-label">Address</label>
-                  <input type="text" class="form-control" id="InputAddress">
+                  <input type="text" class="form-control" id="InputAddress" name="InputAddress">
                 </div>
 
                 <div class="mb-3">
                   <label for="InputDepartment" class="form-label">Department</label>
-                  <input type="text" class="form-control" id="InputDepartment">
+                  <select  class="form-control" id="InputDepartment" name="InputDepartment">
+                    <option value="IT">Information Technology</option>
+                    <option value="HR">Human Resource</option>
+                    <option value="Finance">Finance & Accounting</option>
+                    <option value="Sales">Sales</option>
+                    <option value="Mkt">Marketing</option>
+                  </select>
                 </div>
 
                 <div class="mb-3 form-check">
-                  <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                  <input type="checkbox" class="form-check-input" id="exampleCheck1" name="exampleCheck1">
                   <label class="form-check-label" for="exampleCheck1">Active</label>
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
