@@ -43,3 +43,50 @@ def add_employee(request):
         return redirect("/employee/home/employee_service/")
 
     return render(request, "employee_template/add_employee.html")
+
+
+def delete_emp(request, emp_id):
+    print(emp_id)
+    empl = Employee.objects.get(pk=emp_id)
+    empl.delete()
+    print(empl)
+
+    return redirect("/employee/home/employee_service/")
+
+
+def edit_emp(request, emp_id):
+    print("edit employee with id: ", emp_id)
+    empl = Employee.objects.get(pk=emp_id)
+    return render(request, "employee_template/edit_employee.html", {'employees': empl})
+
+
+def edit_employee_save(request, employee_id):
+
+    if request.method == "POST":
+        print("data is coming")
+        emp_name = request.POST.get("InputName")
+        # emp_id = request.POST.get("InputEmployeeID")
+        emp_mail = request.POST.get("exampleInputEmail1")
+        emp_pass = request.POST.get("exampleInputPassword1")
+        emp_phone = request.POST.get("InputPhone")
+        emp_address = request.POST.get("InputAddress")
+        emp_depart = request.POST.get("InputDepartment")
+        emp_is_active = request.POST.get("InputActiveCheck1")
+
+        fetched_emp = Employee.objects.get(pk=employee_id)
+
+        fetched_emp.name = emp_name
+        fetched_emp.email = emp_mail
+        # fetched_emp.id = emp_id
+        fetched_emp.password = emp_pass
+        fetched_emp.phone = emp_phone
+        fetched_emp.address = emp_address
+        fetched_emp.department = emp_depart
+        if emp_is_active is None:
+            fetched_emp.active = False
+        else:
+            fetched_emp.active = True
+        fetched_emp.save()
+
+    return redirect("/employee/home/employee_service/")
+    # return render(request, "employee_template/.html", {'employees': fetched_emp})
